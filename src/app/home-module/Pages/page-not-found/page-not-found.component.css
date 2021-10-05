@@ -1,0 +1,11 @@
+.imageContainer {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 50vw;
+}

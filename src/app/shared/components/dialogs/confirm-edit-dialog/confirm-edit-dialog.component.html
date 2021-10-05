@@ -1,0 +1,14 @@
+<div class="dialogContainer">
+    <h3 class="title">Confirm</h3>
+    <p class="subTitle">Do you really want to change user data to this?</p>
+    <div class="userInfoContainer">
+        <p>Name: {{user.name}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>CPF: {{user.cpf | cpf}}</p>
+        <p>Profile: {{user.profile}}</p>
+    </div>
+    <div class="actionsContainer">
+        <button mat-stroked-button (click)="action(false)" color="accent">Cancel</button>
+        <button mat-stroked-button (click)="action(true)" color="primary">Confirm</button>
+    </div>
+</div>

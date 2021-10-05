@@ -1,0 +1,15 @@
+.snackContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+mat-icon {
+    color: red;
+    margin-right: 0.3rem;
+}

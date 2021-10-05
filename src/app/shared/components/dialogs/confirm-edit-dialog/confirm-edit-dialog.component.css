@@ -1,0 +1,13 @@
+.actionsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.title{
+    text-align: center;
+}
+
+.subTitle {
+    text-align: center;
+}

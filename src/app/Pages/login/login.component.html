@@ -1,0 +1,15 @@
+<div class="login-container">
+    <div class="authContainer">
+        <h1>Authentication</h1>
+        <div class="formStyle">
+            <app-input-email [emailForm]="formLogin.get('email')"></app-input-email>
+            <app-input-password inputName="Password" [passwordForm]="formLogin.get('password')"></app-input-password>
+            <p *ngIf="credentialsError" class="credentialsError">Invalid credentials</p>
+            <div class="row">
+                <button mat-button color="primary" (click)="singUp()">Sign up</button>
+                <button mat-button color="accent" >Forget password</button>
+            </div>
+            <button mat-raised-button color="primary" (click)="logIn()" [disabled]="!formLogin.valid">Log in</button>
+        </div>
+    </div>
+</div>

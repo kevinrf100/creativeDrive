@@ -1,0 +1,5 @@
+<mat-form-field appearance="fill">
+    <mat-label>{{inputName}}</mat-label>
+    <input matInput placeholder="Kevin" [formControl]="inputFormControl" required>
+    <mat-error *ngIf="inputFormControl.hasError('required')">{{inputName}} is required</mat-error>
+</mat-form-field>

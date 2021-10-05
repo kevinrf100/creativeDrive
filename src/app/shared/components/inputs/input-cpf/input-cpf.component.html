@@ -1,0 +1,10 @@
+<mat-form-field appearance="fill">
+    <mat-label>{{inputName}}</mat-label>
+    <input matInput mask="000.000.000-00" placeholder="000.000.000-00" [formControl]="cpfFormControl" required/>
+    <mat-error *ngIf="cpfFormControl.hasError('required')">
+        {{inputName}} is required
+    </mat-error>
+    <mat-error *ngIf="cpfFormControl.hasError('cpfFormat')">
+        {{inputName}} is invalid
+    </mat-error>
+</mat-form-field>

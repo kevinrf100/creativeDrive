@@ -1,0 +1,26 @@
+<div class="signUpContainer">
+    <div class="formContainer">
+        <div class="formUser" [formGroup]="formUser">
+            <h1 class=title>Sign Up</h1>
+            <app-input-basic [inputFormControl]="formUser.get('name')" inputName="Name"></app-input-basic>
+            <app-input-email [emailForm]="formUser.get('email')"></app-input-email>
+            <app-input-password inputName="Password *" [passwordForm]="formUser.get('password')"></app-input-password>
+            <app-input-password inputName="Confirm password *" [passwordForm]="formUser.get('confirmPassword')">
+            </app-input-password>
+            <app-input-cpf [cpfFormControl]="formUser.get('cpf')"></app-input-cpf>
+            <mat-form-field appearance="fill">
+                <mat-label>Profile</mat-label>
+                <mat-select [formControl]="formUser.get('profile')">
+                    <mat-option *ngFor="let profileOption of profileOptions" [value]="profileOption.value">
+                        {{profileOption.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-checkbox [formControl]="formUser.get('terms')">I accept the terms *</mat-checkbox>
+
+            <button mat-raised-button color="primary"  (click)="onSubmit()">Sign up</button>
+        </div>
+
+    </div>
+</div>
