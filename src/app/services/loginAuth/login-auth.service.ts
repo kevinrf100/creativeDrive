@@ -18,7 +18,7 @@ export class LoginAuthService {
     const user = this.userDaoService.findUserByEmailAndPassword(loginInfos);
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
-      this.route.navigateByUrl('/home');
+      this.route.navigateByUrl('/home/user/list');
       return false;
     }
     return true;

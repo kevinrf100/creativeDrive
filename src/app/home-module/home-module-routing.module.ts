@@ -1,3 +1,4 @@
+import { CanEditUserGuard } from './../guard/can-edit-user.guard';
 import { PageNotFoundComponent } from './Pages/page-not-found/page-not-found.component';
 import { EditUserComponent } from './Pages/edit-user/edit-user.component';
 import { UsersListComponent } from './Pages/users-list/users-list.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
       {
         path: 'user', children: [
           {path: 'list', component: UsersListComponent},
-          {path: 'edit/:id', component: EditUserComponent},
+          {path: 'edit/:id', component: EditUserComponent, canActivate: [CanEditUserGuard]},
           {path: '**', component: PageNotFoundComponent}
         ]
       },

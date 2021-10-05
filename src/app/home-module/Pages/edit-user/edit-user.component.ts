@@ -39,7 +39,7 @@ export class EditUserComponent implements OnInit {
 
   editUser() {
     const editedUser = this.formUser.getRawValue() as User;
-    if (editedUser.password != null) {
+    if (editedUser.password == null) {
       editedUser.password = this.user.password;
     }
 
@@ -49,6 +49,7 @@ export class EditUserComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
+        console.log(editedUser);
         this.userDaoService.updateUser(editedUser);
       } else {
         this.setForm();
