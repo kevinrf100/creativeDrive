@@ -1,123 +1,23 @@
-import { ErrorSnackBarMessageComponent } from '../../shared/components/snackBar/error-snack-bar-message/error-snack-bar-message.component';
-import { User } from './../../shared/models/user_model';
-import { Login } from './../../shared/models/login_models';
-import { User } from '../../shared/models/user_model';
+import {
+  SuccessSnackBarMessageComponent
+} from './../../Modules/shared/components/snackBar/success-snack-bar-message/success-snack-bar-message.component';
+import {
+  ErrorSnackBarMessageComponent
+} from '../../Modules/shared/components/snackBar/error-snack-bar-message/error-snack-bar-message.component';
+import { Login } from '../../Modules/shared/models/login_models';
+import { User } from '../../Modules/shared/models/user_model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDaoService {
 
-  private usersList: Array<User> = [
-    {
-      id: 1,
-      name: 'kevin',
-      email: 'kevinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    },
-    {
-      id: 2,
-      name: 'bevin',
-      email: 'tevinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    },
-    {
-      id: 3,
-      name: 'cevin',
-      email: 'cevinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    },
-    {
-      id: 4,
-      name: 'tevin',
-      email: 'devinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    },
-    {
-      id: 5,
-      name: 'qevin',
-      email: 'hevinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    },
-    {
-      id: 6,
-      name: 'aevin',
-      email: 'qevinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    },
-    {
-      id: 7,
-      name: 'tevin',
-      email: 'bevinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    },
-    {
-      id: 8,
-      name: 'hevin',
-      email: 'xevinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    },
-    {
-      id: 9,
-      name: 'jevin',
-      email: 'zevinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    },
-    {
-      id: 10,
-      name: 'levin',
-      email: 'pevinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    },
-    {
-      id: 11,
-      name: 'yevin',
-      email: 'hevinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    },
-    {
-      id: 12,
-      name: 'qevin',
-      email: 'levinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    },
-    {
-      id: 13,
-      name: 'nevin',
-      email: 'wevinrf100@gmail.com.br',
-      password: '123',
-      cpf: '123456789123',
-      profile: 'admin'
-    }
-  ];
+  private usersList: Array<User> = [];
 
-  constructor(private snackBar: MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar, private route: Router) { }
 
   updateUser(newUser: User) {
     const oldUser = this.getUserById(newUser.id);
@@ -126,19 +26,30 @@ export class UserDaoService {
     this.usersList[index] = newUser;
   }
 
-  createUser(user: User) {
+  createUser(user: User): boolean {
     if (this.validateUniqueEmail(user.email)) {
       user.id = this.usersList.length;
       this.usersList.push(user);
+      this.snackBar.openFromComponent(SuccessSnackBarMessageComponent, { duration: 2000, data: 'User created successfully!' });
+      return true;
     } else {
-      this.snackBar.openFromComponent(ErrorSnackBarMessageComponent, {duration: 2000, data: 'Email is already registered!'});
+      this.snackBar.openFromComponent(ErrorSnackBarMessageComponent, { duration: 2000, data: 'Email is already registered!' });
+      return false;
     }
   }
 
-  removeUser(user: User) {
+  removeUser(user: User): boolean {
     const index: number = this.usersList.indexOf(user);
-    if (index >= 0) {
-      this.usersList = this.usersList.splice(index, 1);
+    if (index >= 0 && this.usersList.length > 1) {
+      this.usersList = this.usersList.splice(index - 1, 1);
+      this.snackBar.openFromComponent(SuccessSnackBarMessageComponent, { duration: 2000, data: 'User has been removed!' });
+      return true;
+    } else if (this.usersList.length === 1) {
+      this.usersList.pop();
+      this.snackBar.openFromComponent(SuccessSnackBarMessageComponent, { duration: 2000, data: 'User has been removed!' });
+      return true;
+    } else {
+      return false;
     }
   }
 

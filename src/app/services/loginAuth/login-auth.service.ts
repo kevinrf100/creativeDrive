@@ -1,4 +1,4 @@
-import { Login } from './../../shared/models/login_models';
+import { Login } from '../../Modules/shared/models/login_models';
 import { Injectable } from '@angular/core';
 import { UserDaoService } from '../dao/user-dao.service';
 import { Route } from '@angular/compiler/src/core';
@@ -17,6 +17,7 @@ export class LoginAuthService {
   logIn(loginInfos: Login): boolean {
     const user = this.userDaoService.findUserByEmailAndPassword(loginInfos);
     if (user) {
+      localStorage.clear();
       localStorage.setItem('user', JSON.stringify(user));
       this.route.navigateByUrl('/home/user/list');
       return false;

@@ -1,0 +1,18 @@
+<div class="editContainer">
+    <h1>Editing user: {{user.id}}</h1>
+    <div class="inputContainer">
+        <app-input-basic [inputFormControl]="formUser.get('name')" inputName="Name"></app-input-basic>
+        <app-input-email [emailForm]="formUser.get('email')"></app-input-email>
+        <app-input-password [passwordForm]="formUser.get('password')"></app-input-password>
+        <app-input-cpf [cpfFormControl]="formUser.get('cpf')"></app-input-cpf>
+        <mat-form-field appearance="fill">
+            <mat-label>Profile</mat-label>
+            <mat-select [formControl]="formUser.get('profile')">
+                <mat-option *ngFor="let profileOption of profileOptions" [value]="profileOption.value">
+                    {{profileOption.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" (click)="editUser()">Edit user</button>
+</div>

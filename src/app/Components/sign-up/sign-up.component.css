@@ -1,0 +1,40 @@
+.signUpContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("/assets/images/loginPage.png");
+}
+
+.title {
+    text-align: center;
+}
+
+.formContainer {
+    width: 50vw;
+    background-color: white;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.formUser {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+mat-checkbox {
+    margin-bottom: 0.5rem;
+}
+
+mat-form-field {
+    width: 100%;
+}

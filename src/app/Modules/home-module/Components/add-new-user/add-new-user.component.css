@@ -1,0 +1,61 @@
+.formContainer {
+  display: grid;
+  row-gap: 1rem;
+  column-gap: 1rem;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  place-items: center;
+  grid-template-areas:
+    "header header"
+    "name  email"
+    "password confirmPassword"
+    "cpf profile"
+    "button button";
+}
+
+
+app-input-basic {
+  grid-area: name;
+  width: 100%;
+}
+
+app-input-email {
+  grid-area: email;
+  width: 100%;
+}
+
+app-input-password#password {
+  grid-area: password;
+  width: 100%;
+}
+
+app-input-password#confirmPassword {
+  grid-area: confirmPassword;
+  width: 100%;
+}
+
+app-input-cpf {
+  grid-area: cpf;
+  width: 100%;
+}
+
+mat-form-field {
+  grid-area: profile;
+  width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    grid-area: header;
+    text-align: center;
+}
+
+.createButton {
+    grid-area: button;
+    width: fit-content;
+}

@@ -1,0 +1,7 @@
+::ng-deep ::-webkit-scrollbar {   width: 2rem; } 
+::ng-deep ::-webkit-scrollbar-thumb {   
+    border: 10px solid transparent;   
+    background-clip: padding-box;
+    border-radius: 10rem;   
+    background-color: rgba(0, 0, 0, 0.15);
+}

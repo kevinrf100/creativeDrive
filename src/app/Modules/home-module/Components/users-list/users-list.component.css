@@ -1,0 +1,19 @@
+.tableStyle {
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.adding-column {
+    text-align: center;
+    color: #ffd740;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.adding {
+    height: 3rem;
+}

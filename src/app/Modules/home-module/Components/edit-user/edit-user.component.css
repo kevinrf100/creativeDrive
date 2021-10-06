@@ -1,0 +1,14 @@
+.editContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-form-field {
+    width: 25% !important;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

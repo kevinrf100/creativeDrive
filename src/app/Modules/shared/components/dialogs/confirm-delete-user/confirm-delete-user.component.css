@@ -1,0 +1,13 @@
+.title, .subTitle {
+    text-align: center;
+}
+
+.actionsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.actionsContainer button {
+    margin-right: 0.3rem;
+}

@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="formContainer">
+        <h1 class="title">Create new user</h1>
+        <app-input-basic [inputFormControl]="formUser.get('name')" inputName="Name"></app-input-basic>
+        <app-input-email [emailForm]="formUser.get('email')"></app-input-email>
+        <app-input-password id="password" inputName="Password *" [passwordForm]="formUser.get('password')"></app-input-password>
+        <app-input-password id="confirmPassword" inputName="Confirm password *" [passwordForm]="formUser.get('confirmPassword')"></app-input-password>
+        <app-input-cpf [cpfFormControl]="formUser.get('cpf')"></app-input-cpf>
+        <mat-form-field appearance="fill">
+            <mat-label>Profile</mat-label>
+            <mat-select [formControl]="formUser.get('profile')">
+                <mat-option *ngFor="let profileOption of profileOptions" [value]="profileOption.value">
+                    {{profileOption.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button class="createButton" mat-raised-button color="primary" [disabled]="!formUser.valid" (click)="onSubmit()">Create user</button>
+    </div>
+</div>

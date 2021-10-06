@@ -1,0 +1,15 @@
+.snackContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+mat-icon {
+    color: green;
+    margin-right: 0.3rem;
+}
+
+.success {
+    color: green;
+    text-align: center;
+}

@@ -1,0 +1,26 @@
+<div class="container">
+    <mat-toolbar class="matToolbar">
+        <button mat-icon-button color="accent" class="example-icon" aria-label="Example icon-button with menu icon"
+            (click)="sideBar.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <div class="userLoggedContainer">
+            <p class="helloUser">Hello {{firstName}}</p>
+            <img src="../../assets/images/person.jpeg" alt="person photo">
+        </div>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="sideBar">
+        <mat-sidenav class="optionSideBar" #sideBar mode="over" [(opened)]="opened">
+            <div class="navigateContainer">
+                <button mat-button color="accent" (click)="navigateTo('/home/user/list')">User list</button>
+                <button mat-button color="accent" (click)="navigateTo('/home/user/create')">Create user</button>
+            </div>
+            <button mat-button color="primary" (click)="logOut()">Log out</button>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
