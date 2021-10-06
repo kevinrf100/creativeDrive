@@ -1,8 +1,7 @@
 import { User } from '../../Modules/shared/models/user_model';
 import { UserDaoService } from '../../services/dao/user-dao.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
-import { group } from 'console';
+import { FormControl, Validators, FormGroup, ValidatorFn, AbstractControl } from '@angular/forms';
 import { validateCpf } from '../../Modules/shared/components/inputs/input-cpf/input-cpf.component';
 import { Router } from '@angular/router';
 
