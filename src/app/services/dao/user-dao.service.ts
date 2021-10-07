@@ -6,7 +6,7 @@ import {
 } from '../../Modules/shared/components/snackBar/error-snack-bar-message/error-snack-bar-message.component';
 import { Login } from '../../Modules/shared/models/login_models';
 import { User } from '../../Modules/shared/models/user_model';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 
@@ -17,7 +17,10 @@ export class UserDaoService {
 
   private usersList: Array<User> = [];
 
-  constructor(private snackBar: MatSnackBar, private route: Router) { }
+  constructor(
+    @Inject(MatSnackBar) private snackBar: MatSnackBar,
+    @Inject(Router) private route: Router
+  ) { }
 
   updateUser(newUser: User) {
     const oldUser = this.getUserById(newUser.id);

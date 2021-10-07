@@ -1,6 +1,6 @@
 import { Login } from '../../Modules/shared/models/login_models';
 import { LoginAuthService } from '../../services/loginAuth/login-auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
   credentialsError = false;
 
   constructor(
-    private route: Router,
-    private loginAuthService: LoginAuthService,
+    @Inject(Router) private route: Router,
+    @Inject(LoginAuthService) private loginAuthService: LoginAuthService,
   ) { }
 
   ngOnInit() {

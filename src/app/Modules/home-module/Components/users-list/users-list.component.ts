@@ -1,6 +1,6 @@
 import { ConfirmDeleteUserComponent } from './../../../shared/components/dialogs/confirm-delete-user/confirm-delete-user.component';
 import { User } from '../../../shared/models/user_model';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, ViewChild } from '@angular/core';
 import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { UserDaoService } from 'src/app/services/dao/user-dao.service';
 import { Router } from '@angular/router';
@@ -16,13 +16,13 @@ export class UsersListComponent implements AfterViewInit {
   usersData;
   displayedColumns: string[] = ['name', 'email', 'cpf', 'profile'];
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private userDaoService: UserDaoService,
-    private route: Router,
-    public dialog: MatDialog
+    @Inject(UserDaoService) private userDaoService: UserDaoService,
+    @Inject(Router) private route: Router,
+    @Inject(MatDialog) public dialog: MatDialog
   ) {
     this.usersData = new MatTableDataSource<User>(this.userDaoService.getUserList());
     if (this.user && this.user.profile === 'admin') {

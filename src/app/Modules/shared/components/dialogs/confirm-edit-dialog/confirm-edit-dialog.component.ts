@@ -12,7 +12,7 @@ export class ConfirmEditDialogComponent implements OnInit {
   user: User;
 
   constructor(
-    public dialogRef: MatDialogRef<ConfirmEditDialogComponent>,
+    @Inject(MatDialogRef) public dialogRef: MatDialogRef<ConfirmEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: User
   ) {
     this.user = data;

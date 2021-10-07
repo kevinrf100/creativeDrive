@@ -1,7 +1,8 @@
+import { Router } from '@angular/router';
 import { User } from './../../../shared/models/user_model';
 import { UserDaoService } from 'src/app/services/dao/user-dao.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { validateCpf } from 'src/app/Modules/shared/components/inputs/input-cpf/input-cpf.component';
 import { validatePasswords } from 'src/app/Modules/shared/Validators/validate-password';
 
@@ -26,14 +27,16 @@ export class AddNewUserComponent implements OnInit {
     { name: 'User', value: 'user' }
   ];
 
-  constructor(private userDaoService: UserDaoService) { }
+  constructor(@Inject(UserDaoService) private userDaoService: UserDaoService, @Inject(Router) private route: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
     const user = this.formUser.getRawValue() as User;
-    this.userDaoService.createUser(user);
+    if (this.userDaoService.createUser(user)) {
+      this.route.navigateByUrl('/home/user/list');
+    }
   }
 
 }

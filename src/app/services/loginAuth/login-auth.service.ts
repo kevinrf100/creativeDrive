@@ -1,5 +1,5 @@
 import { Login } from '../../Modules/shared/models/login_models';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { UserDaoService } from '../dao/user-dao.service';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class LoginAuthService {
 
   constructor(
-    private userDaoService: UserDaoService,
-    private route: Router
+    @Inject(UserDaoService) private userDaoService: UserDaoService,
+    @Inject(Router) private route: Router
   ) { }
 
   logIn(loginInfos: Login): boolean {

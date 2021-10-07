@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
@@ -8,7 +8,9 @@ import { MatDialogRef } from '@angular/material';
 })
 export class ConfirmDeleteUserComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<ConfirmDeleteUserComponent>) { }
+  constructor(
+    @Inject(MatDialogRef) public dialogRef: MatDialogRef<ConfirmDeleteUserComponent>
+  ) { }
 
   ngOnInit() {
   }

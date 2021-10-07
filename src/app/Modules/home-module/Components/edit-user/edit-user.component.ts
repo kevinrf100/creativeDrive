@@ -2,7 +2,7 @@ import { ConfirmEditDialogComponent } from '../../../shared/components/dialogs/c
 import { UserDaoService } from 'src/app/services/dao/user-dao.service';
 import { User } from '../../../shared/models/user_model';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { validateCpf } from 'src/app/Modules/shared/components/inputs/input-cpf/input-cpf.component';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
@@ -25,9 +25,9 @@ export class EditUserComponent implements OnInit {
   ];
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private userDaoService: UserDaoService,
-    public dialog: MatDialog
+    @Inject(ActivatedRoute) private activatedRoute: ActivatedRoute,
+    @Inject(UserDaoService) private userDaoService: UserDaoService,
+    @Inject(MatDialog) public dialog: MatDialog
   ) {
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
     this.user = this.userDaoService.getUserById(id);

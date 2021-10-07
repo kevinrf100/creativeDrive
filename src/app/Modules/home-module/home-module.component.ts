@@ -1,6 +1,6 @@
 import { User } from './../shared/models/user_model';
 import { LoginAuthService } from '../../services/loginAuth/login-auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,8 +15,8 @@ export class HomeModuleComponent implements OnInit {
   firstName: string;
 
   constructor(
-    private loginAuthService: LoginAuthService,
-    private route: Router
+    @Inject(LoginAuthService) private loginAuthService: LoginAuthService,
+    @Inject(Router) private route: Router
   ) {
     this.userLogged = JSON.parse(localStorage.getItem('user')) as User;
     this.firstName = this.userLogged.name.split(' ')[0];

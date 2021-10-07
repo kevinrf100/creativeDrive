@@ -1,5 +1,5 @@
 import { User } from '../Modules/shared/models/user_model';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CanEditUserGuard implements CanActivate {
 
-  constructor(private route: Router) {}
+  constructor(@Inject(Router) private route: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
